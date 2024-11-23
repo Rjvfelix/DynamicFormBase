@@ -1,0 +1,30 @@
+{
+  "title": "Mon Formulaire",
+  "fields": [
+    {
+      "type": "text",
+      "label": "Full Name",
+      "required": true
+    },
+    {
+      "type": "email",
+      "label": "Email Address",
+      "required": true
+    },
+    {
+      "type": "phone",
+      "label": "Phone Number",
+      "required": false
+    },
+    {
+      "type": "number",
+      "label": "Age",
+      "required": true
+    },
+    {
+      "type": "text",
+      "label": "Address",
+      "required": false
+    }
+  ]
+}
