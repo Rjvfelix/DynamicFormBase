@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.dynamicform.app-mergeDebugResources-26:/values/values.xml",
+            "outputFile": "com.example.dynamicform.app-mergeDebugResources-29:/values/values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Windows 10\\.gradle\\caches\\8.9\\transforms\\ea42bebdd2983b13834dddfdb0188033\\transformed\\drawerlayout-1.1.1\\res\\values\\values.xml",

@@ -1,82 +1,82 @@
 [
     {
-        "merged": "com.example.dynamicform.app-debug-28:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.dynamicform.app-main-30:/drawable/ic_launcher_background.xml"
+        "merged": "com.example.dynamicform.app-debug-31:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.example.dynamicform.app-main-33:/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.dynamicform.app-debug-28:/mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "com.example.dynamicform.app-main-30:/mipmap-xxhdpi/ic_launcher_round.png"
+        "merged": "com.example.dynamicform.app-debug-31:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.dynamicform.app-main-33:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "com.example.dynamicform.app-debug-28:/drawable_ic_close.xml.flat",
-        "source": "com.example.dynamicform.app-main-30:/drawable/ic_close.xml"
+        "merged": "com.example.dynamicform.app-debug-31:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "com.example.dynamicform.app-main-33:/mipmap-mdpi/ic_launcher_round.png"
     },
     {
-        "merged": "com.example.dynamicform.app-debug-28:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
-        "source": "com.example.dynamicform.app-pngs-24:/drawable-anydpi-v24/ic_launcher_foreground.xml"
+        "merged": "com.example.dynamicform.app-debug-31:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "com.example.dynamicform.app-main-33:/mipmap-xxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "com.example.dynamicform.app-debug-28:/drawable_round_primary.xml.flat",
-        "source": "com.example.dynamicform.app-main-30:/drawable/round_primary.xml"
+        "merged": "com.example.dynamicform.app-debug-31:/drawable_round_primary.xml.flat",
+        "source": "com.example.dynamicform.app-main-33:/drawable/round_primary.xml"
     },
     {
-        "merged": "com.example.dynamicform.app-debug-28:/layout_activity_main.xml.flat",
-        "source": "com.example.dynamicform.app-main-30:/layout/activity_main.xml"
+        "merged": "com.example.dynamicform.app-debug-31:/layout_activity_main.xml.flat",
+        "source": "com.example.dynamicform.app-main-33:/layout/activity_main.xml"
     },
     {
-        "merged": "com.example.dynamicform.app-debug-28:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.example.dynamicform.app-main-30:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "com.example.dynamicform.app-debug-31:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.example.dynamicform.app-main-33:/mipmap-xxhdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.dynamicform.app-debug-28:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.example.dynamicform.app-main-30:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "com.example.dynamicform.app-debug-31:/drawable_ic_add.xml.flat",
+        "source": "com.example.dynamicform.app-main-33:/drawable/ic_add.xml"
     },
     {
-        "merged": "com.example.dynamicform.app-debug-28:/drawable_round_grey.xml.flat",
-        "source": "com.example.dynamicform.app-main-30:/drawable/round_grey.xml"
+        "merged": "com.example.dynamicform.app-debug-31:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.example.dynamicform.app-main-33:/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.dynamicform.app-debug-28:/drawable_ic_add.xml.flat",
-        "source": "com.example.dynamicform.app-main-30:/drawable/ic_add.xml"
+        "merged": "com.example.dynamicform.app-debug-31:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "com.example.dynamicform.app-main-33:/mipmap-xhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "com.example.dynamicform.app-debug-28:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "com.example.dynamicform.app-main-30:/mipmap-xxxhdpi/ic_launcher_round.png"
+        "merged": "com.example.dynamicform.app-debug-31:/drawable_ic_close.xml.flat",
+        "source": "com.example.dynamicform.app-main-33:/drawable/ic_close.xml"
     },
     {
-        "merged": "com.example.dynamicform.app-debug-28:/mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "com.example.dynamicform.app-main-30:/mipmap-mdpi/ic_launcher_round.png"
+        "merged": "com.example.dynamicform.app-debug-31:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.dynamicform.app-main-33:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "com.example.dynamicform.app-debug-28:/mipmap-xhdpi_ic_launcher_round.png.flat",
-        "source": "com.example.dynamicform.app-main-30:/mipmap-xhdpi/ic_launcher_round.png"
+        "merged": "com.example.dynamicform.app-debug-31:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "com.example.dynamicform.app-main-33:/mipmap-xxxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "com.example.dynamicform.app-debug-28:/layout_nav_header.xml.flat",
-        "source": "com.example.dynamicform.app-main-30:/layout/nav_header.xml"
+        "merged": "com.example.dynamicform.app-debug-31:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.dynamicform.app-main-33:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "com.example.dynamicform.app-debug-28:/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "com.example.dynamicform.app-main-30:/mipmap-xxxhdpi/ic_launcher.png"
+        "merged": "com.example.dynamicform.app-debug-31:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "com.example.dynamicform.app-pngs-27:/drawable-anydpi-v24/ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.dynamicform.app-debug-28:/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "com.example.dynamicform.app-main-30:/mipmap-hdpi/ic_launcher.png"
+        "merged": "com.example.dynamicform.app-debug-31:/layout_nav_header.xml.flat",
+        "source": "com.example.dynamicform.app-main-33:/layout/nav_header.xml"
     },
     {
-        "merged": "com.example.dynamicform.app-debug-28:/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "com.example.dynamicform.app-main-30:/mipmap-xxhdpi/ic_launcher.png"
+        "merged": "com.example.dynamicform.app-debug-31:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "com.example.dynamicform.app-main-33:/mipmap-hdpi/ic_launcher_round.png"
     },
     {
-        "merged": "com.example.dynamicform.app-debug-28:/mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "com.example.dynamicform.app-main-30:/mipmap-hdpi/ic_launcher_round.png"
+        "merged": "com.example.dynamicform.app-debug-31:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.example.dynamicform.app-main-33:/mipmap-hdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.dynamicform.app-debug-28:/mipmap-mdpi_ic_launcher.png.flat",
-        "source": "com.example.dynamicform.app-main-30:/mipmap-mdpi/ic_launcher.png"
+        "merged": "com.example.dynamicform.app-debug-31:/drawable_round_grey.xml.flat",
+        "source": "com.example.dynamicform.app-main-33:/drawable/round_grey.xml"
     },
     {
-        "merged": "com.example.dynamicform.app-debug-28:/mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "com.example.dynamicform.app-main-30:/mipmap-xhdpi/ic_launcher.png"
+        "merged": "com.example.dynamicform.app-debug-31:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.example.dynamicform.app-main-33:/mipmap-xxxhdpi/ic_launcher.png"
     }
 ]

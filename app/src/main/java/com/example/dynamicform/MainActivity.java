@@ -1,11 +1,17 @@
 package com.example.dynamicform;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.dynamicform.models.FormData;
 import com.example.dynamicform.models.FormField;
+import com.example.dynamicform.room.AppDatabase;
+import com.example.dynamicform.utils.HashUtils;
 import com.example.dynamicform.utils.JsonFormParser;
 import com.example.dynamicform.views.FormFieldView;
 import com.squareup.javapoet.ClassName;
@@ -18,11 +24,20 @@ import com.squareup.javapoet.TypeSpec;
 
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.InputStream;
+import java.lang.reflect.Field;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import javax.lang.model.element.Modifier;
+import javax.tools.JavaCompiler;
+import javax.tools.JavaFileObject;
+import javax.tools.StandardJavaFileManager;
+import javax.tools.ToolProvider;
 
 public class MainActivity extends AppCompatActivity {
     private LinearLayout formContainer;
@@ -64,9 +79,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void generateForm(String formTitle) {
         formContainer.removeAllViews();
-        
+
         for (FormField field : formFields) {
-            formContainer.addView(FormFieldView.createField(this, field));
+            FormFieldView fieldView = new FormFieldView(this, field);
+            fieldView.setTag(field.getLabel()); // Assign a unique tag for reference
+            formContainer.addView(fieldView);
         }
 
         Button submitButton = new Button(this);
@@ -77,83 +94,86 @@ public class MainActivity extends AppCompatActivity {
 
     private void validateAndSubmit(String formTitle) {
         try {
-            // Generate dynamic class
+            // Collect values from form fields
+            for (FormField field : formFields) {
+                View view = formContainer.findViewWithTag(field.getLabel());
+
+                if (view instanceof FormFieldView) {
+                    FormFieldView fieldView = (FormFieldView) view;
+                    String value = fieldView.getValue();
+
+                    if (field.isRequired() && value.isEmpty()) {
+                        Toast.makeText(this, field.getLabel() + " is required!", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
+                    field.setValue(value);
+                } else {
+                    throw new IllegalStateException("View for field " + field.getLabel() + " is not a FormFieldView.");
+                }
+            }
+
+            // Generate the dynamic class using JavaPoet
             String className = capitalize(sanitizeFieldName(formTitle));
-            TypeSpec dynamicClass = generateDynamicClass(className, formFields);
 
-            // Write the generated class to a file
-            JavaFile javaFile = JavaFile.builder("com.example.dynamicform.generated", dynamicClass)
-                    .build();
+            saveFormData(className);
 
-            // Write the file to disk
-            javaFile.writeTo(System.out); // Replace with actual output destination
+            // Toast the value of the first field
+            //Toast.makeText(this, "Form submitted successfully!", Toast.LENGTH_LONG).show();
 
-            Toast.makeText(this, "Dynamic class generated: " + className, Toast.LENGTH_LONG).show();
         } catch (Exception e) {
-            Toast.makeText(this, "Error generating dynamic class: " + e.getMessage(),
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Error submitting form: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            e.printStackTrace();
         }
     }
 
-    private TypeSpec generateDynamicClass(String className, List<FormField> formFields) {
-        ClassName dynamicClassName = ClassName.get("com.example.dynamicform.generated", className);
+    private void saveFormData(String formTitle) {
+        // Get database instance
+        AppDatabase db = AppDatabase.getInstance(this);
+        String formId = HashUtils.generateMD5(System.currentTimeMillis() + formTitle);
 
-        TypeSpec.Builder classBuilder = TypeSpec.classBuilder(dynamicClassName)
-                .addModifiers(Modifier.PUBLIC);
 
-        // Constructor
-        MethodSpec constructor = MethodSpec.constructorBuilder()
-                .addParameters(getConstructorParams(formFields))
-                .addCode(getConstructorBody(formFields))
-                .build();
-        classBuilder.addMethod(constructor);
+        // Use a separate thread for database operations
+        new Thread(() -> {
+            for (FormField field : formFields) { // Assuming `formFields` contains your fields
+                View view = formContainer.findViewWithTag(field.getLabel());
+                if (view instanceof EditText) { // Adjust based on your field type
+                    EditText editText = (EditText) view;
+                    String value = editText.getText().toString();
 
-        // Fields
-        for (FormField field : formFields) {
-            FieldSpec fieldSpec = FieldSpec.builder(
-                    ClassName.get("", sanitizeFieldName(field.getLabel())),
-                    sanitizeFieldName(field.getLabel()),
-                    Modifier.PRIVATE
-            ).build();
-            classBuilder.addField(fieldSpec);
+                    // Create FormData object
+                    FormData formData = new FormData();
+                    formData.formId = formId;
+                    formData.formTitle = formTitle;
+                    formData.fieldName = field.getLabel();
+                    formData.fieldValue = value;
 
-            // Getter
-            MethodSpec getter = MethodSpec.methodBuilder("get" + capitalize(sanitizeFieldName(field.getLabel())))
-                    .addModifiers(Modifier.PUBLIC)
-                    .returns(ClassName.get("", sanitizeFieldName(field.getLabel())))
-                    .addStatement("return $N", sanitizeFieldName(field.getLabel()))
-                    .build();
-            classBuilder.addMethod(getter);
-
-            // Setter
-            MethodSpec setter = MethodSpec.methodBuilder("set" + capitalize(sanitizeFieldName(field.getLabel())))
-                    .addModifiers(Modifier.PUBLIC)
-                    .addParameter(ClassName.get("", sanitizeFieldName(field.getLabel())), sanitizeFieldName(field.getLabel()))
-                    .addStatement("$N.$N = $N", "this", sanitizeFieldName(field.getLabel()), sanitizeFieldName(field.getLabel()))
-                    .build();
-            classBuilder.addMethod(setter);
-        }
-
-        return classBuilder.build();
+                    // Save to database
+                    db.formDataDao().insert(formData);
+                }
+            }
+            runOnUiThread(() ->
+                    Toast.makeText(this, "Form saved locally!", Toast.LENGTH_LONG).show()
+            );
+        }).start();
     }
 
-    private List<ParameterSpec> getConstructorParams(List<FormField> formFields) {
-        List<ParameterSpec> params = new ArrayList<>();
-        for (FormField field : formFields) {
-            params.add(ParameterSpec.builder(
-                    ClassName.get("", sanitizeFieldName(field.getLabel())),
-                    sanitizeFieldName(field.getLabel())
-            ).build());
-        }
-        return params;
-    }
+    private void loadFormData(String formTitle) {
+        // Get database instance
+        AppDatabase db = AppDatabase.getInstance(this);
 
-    private CodeBlock getConstructorBody(List<FormField> formFields) {
-        CodeBlock.Builder body = CodeBlock.builder();
-        for (FormField field : formFields) {
-            body.addStatement("$N.$N = $N", "this", sanitizeFieldName(field.getLabel()), sanitizeFieldName(field.getLabel()));
-        }
-        return body.build();
+        new Thread(() -> {
+            List<FormData> formDataList = db.formDataDao().getFormData(formTitle);
+            runOnUiThread(() -> {
+                for (FormData formData : formDataList) {
+                    View view = formContainer.findViewWithTag(formData.fieldName);
+                    if (view instanceof EditText) { // Adjust based on your field type
+                        EditText editText = (EditText) view;
+                        editText.setText(formData.fieldValue);
+                    }
+                }
+            });
+        }).start();
     }
 
     // Utility method to sanitize field labels into valid Java variable names
