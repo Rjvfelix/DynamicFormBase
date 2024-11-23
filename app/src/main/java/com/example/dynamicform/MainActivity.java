@@ -1,6 +1,7 @@
 package com.example.dynamicform;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import com.example.dynamicform.room.AppDatabase;
 import com.example.dynamicform.utils.HashUtils;
 import com.example.dynamicform.utils.JsonFormParser;
 import com.example.dynamicform.views.FormFieldView;
+import com.google.android.material.textfield.TextInputEditText;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.CodeBlock;
 import com.squareup.javapoet.FieldSpec;
@@ -136,10 +138,18 @@ public class MainActivity extends AppCompatActivity {
         // Use a separate thread for database operations
         new Thread(() -> {
             for (FormField field : formFields) { // Assuming `formFields` contains your fields
+                Log.d("FormFieldSize", "Size: "+formFields.size());
                 View view = formContainer.findViewWithTag(field.getLabel());
-                if (view instanceof EditText) { // Adjust based on your field type
-                    EditText editText = (EditText) view;
-                    String value = editText.getText().toString();
+                Log.d("FormFieldType", "Type: "+field.getType());
+
+
+                Log.d("FormFieldView", "view: "+view);
+
+                if (view instanceof FormFieldView) { // Adjust based on your field type
+                    FormFieldView editText = (FormFieldView) view;
+                    String value = editText.getValue();
+
+                    Log.d("FormField", "saveFormData: "+value);
 
                     // Create FormData object
                     FormData formData = new FormData();
