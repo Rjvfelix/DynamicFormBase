@@ -2,7 +2,6 @@ package com.example.dynamicform.views;
 
 import android.content.Context;
 import android.text.InputType;
-import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.dynamicform.models.FormField;
@@ -59,7 +58,7 @@ public class FormFieldView extends LinearLayout {
     }
 
     public String getValue() {
-        return editText.getText().toString().trim();
+        return editText.getText()==null?"":editText.getText().toString().trim();
     }
 
     public void setValue(String value) {

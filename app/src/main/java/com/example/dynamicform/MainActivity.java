@@ -15,31 +15,12 @@ import com.example.dynamicform.room.AppDatabase;
 import com.example.dynamicform.utils.HashUtils;
 import com.example.dynamicform.utils.JsonFormParser;
 import com.example.dynamicform.views.FormFieldView;
-import com.google.android.material.textfield.TextInputEditText;
-import com.squareup.javapoet.ClassName;
-import com.squareup.javapoet.CodeBlock;
-import com.squareup.javapoet.FieldSpec;
-import com.squareup.javapoet.JavaFile;
-import com.squareup.javapoet.MethodSpec;
-import com.squareup.javapoet.ParameterSpec;
-import com.squareup.javapoet.TypeSpec;
 
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.InputStream;
-import java.lang.reflect.Field;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.List;
-import javax.lang.model.element.Modifier;
-import javax.tools.JavaCompiler;
-import javax.tools.JavaFileObject;
-import javax.tools.StandardJavaFileManager;
-import javax.tools.ToolProvider;
 
 public class MainActivity extends AppCompatActivity {
     private LinearLayout formContainer;
@@ -157,6 +138,9 @@ public class MainActivity extends AppCompatActivity {
                     formData.formTitle = formTitle;
                     formData.fieldName = field.getLabel();
                     formData.fieldValue = value;
+                    formData.insertedOn = System.currentTimeMillis(); // Record creation time
+                    formData.synced = 0; // Not synced initially
+                    formData.syncedOn = 0; // No sync timestamp initially
 
                     // Save to database
                     db.formDataDao().insert(formData);
@@ -164,6 +148,38 @@ public class MainActivity extends AppCompatActivity {
             }
             runOnUiThread(() ->
                     Toast.makeText(this, "Form saved locally!", Toast.LENGTH_LONG).show()
+            );
+        }).start();
+    }
+
+    private void markDataAsSynced(String formId) {
+        AppDatabase db = AppDatabase.getInstance(this);
+
+        new Thread(() -> {
+            long syncTimestamp = System.currentTimeMillis();
+            db.formDataDao().markAsSynced(formId, true, syncTimestamp);
+
+            runOnUiThread(() ->
+                    Toast.makeText(this, "Data synced successfully!", Toast.LENGTH_LONG).show()
+            );
+        }).start();
+    }
+
+    private void syncData() {
+        AppDatabase db = AppDatabase.getInstance(this);
+
+        new Thread(() -> {
+            List<FormData> unsyncedData = db.formDataDao().getUnsyncedData();
+
+            // Simulate syncing process
+            for (FormData data : unsyncedData) {
+                // Sync logic here (e.g., send data to the server)
+                // If sync is successful, mark as synced
+                db.formDataDao().markAsSynced(data.formId, true, System.currentTimeMillis());
+            }
+
+            runOnUiThread(() ->
+                    Toast.makeText(this, "Data synced successfully!", Toast.LENGTH_LONG).show()
             );
         }).start();
     }

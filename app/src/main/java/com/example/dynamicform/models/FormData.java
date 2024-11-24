@@ -1,5 +1,6 @@
 package com.example.dynamicform.models;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -10,9 +11,23 @@ public class FormData {
     public int id;
 
     @ColumnInfo(name = "formId")
-    public String formId; // Now a String to hold the MD5 hash
+    public String formId;
 
-    public String formTitle; // Title of the form
-    public String fieldName; // Name of the field
-    public String fieldValue; // Value of the field
+    @ColumnInfo(name = "formTitle")
+    public String formTitle;
+
+    @ColumnInfo(name = "fieldName")
+    public String fieldName;
+
+    @ColumnInfo(name = "fieldValue")
+    public String fieldValue;
+
+    @ColumnInfo(name = "inserted_on", defaultValue = "0")
+    public long insertedOn; // NOT NULL with a default value of 0
+
+    @ColumnInfo(name = "synced", defaultValue = "0")
+    public int synced; // NOT NULL with a default value of 0
+
+    @ColumnInfo(name = "synced_on", defaultValue = "0")
+    public long syncedOn; // NOT NULL with a default value of 0
 }
