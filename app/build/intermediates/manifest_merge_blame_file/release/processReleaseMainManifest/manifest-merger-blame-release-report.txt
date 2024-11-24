@@ -1,0 +1,89 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.dynamicform"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="33" />
+10
+11    <permission
+11-->[androidx.core:core:1.9.0] C:\Users\Windows 10\.gradle\caches\8.9\transforms\39178a91acff90254b0f7c86b040944b\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+12        android:name="com.example.dynamicform.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+12-->[androidx.core:core:1.9.0] C:\Users\Windows 10\.gradle\caches\8.9\transforms\39178a91acff90254b0f7c86b040944b\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+13        android:protectionLevel="signature" />
+13-->[androidx.core:core:1.9.0] C:\Users\Windows 10\.gradle\caches\8.9\transforms\39178a91acff90254b0f7c86b040944b\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+14
+15    <uses-permission android:name="com.example.dynamicform.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+15-->[androidx.core:core:1.9.0] C:\Users\Windows 10\.gradle\caches\8.9\transforms\39178a91acff90254b0f7c86b040944b\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+15-->[androidx.core:core:1.9.0] C:\Users\Windows 10\.gradle\caches\8.9\transforms\39178a91acff90254b0f7c86b040944b\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+16
+17    <application
+17-->D:\Workspaces\StudioProjects\DynamicForm\app\src\main\AndroidManifest.xml:4:5-19:19
+18        android:allowBackup="true"
+18-->D:\Workspaces\StudioProjects\DynamicForm\app\src\main\AndroidManifest.xml:5:9-35
+19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+19-->[androidx.core:core:1.9.0] C:\Users\Windows 10\.gradle\caches\8.9\transforms\39178a91acff90254b0f7c86b040944b\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+20        android:extractNativeLibs="true"
+21        android:icon="@mipmap/ic_launcher"
+21-->D:\Workspaces\StudioProjects\DynamicForm\app\src\main\AndroidManifest.xml:6:9-43
+22        android:label="@string/app_name"
+22-->D:\Workspaces\StudioProjects\DynamicForm\app\src\main\AndroidManifest.xml:7:9-41
+23        android:roundIcon="@mipmap/ic_launcher_round"
+23-->D:\Workspaces\StudioProjects\DynamicForm\app\src\main\AndroidManifest.xml:8:9-54
+24        android:supportsRtl="true"
+24-->D:\Workspaces\StudioProjects\DynamicForm\app\src\main\AndroidManifest.xml:9:9-35
+25        android:theme="@style/AppTheme" >
+25-->D:\Workspaces\StudioProjects\DynamicForm\app\src\main\AndroidManifest.xml:10:9-40
+26        <activity
+26-->D:\Workspaces\StudioProjects\DynamicForm\app\src\main\AndroidManifest.xml:11:9-18:20
+27            android:name="com.example.dynamicform.MainActivity"
+27-->D:\Workspaces\StudioProjects\DynamicForm\app\src\main\AndroidManifest.xml:12:13-41
+28            android:exported="true" >
+28-->D:\Workspaces\StudioProjects\DynamicForm\app\src\main\AndroidManifest.xml:13:13-36
+29            <intent-filter>
+29-->D:\Workspaces\StudioProjects\DynamicForm\app\src\main\AndroidManifest.xml:14:13-17:29
+30                <action android:name="android.intent.action.MAIN" />
+30-->D:\Workspaces\StudioProjects\DynamicForm\app\src\main\AndroidManifest.xml:15:17-69
+30-->D:\Workspaces\StudioProjects\DynamicForm\app\src\main\AndroidManifest.xml:15:25-66
+31
+32                <category android:name="android.intent.category.LAUNCHER" />
+32-->D:\Workspaces\StudioProjects\DynamicForm\app\src\main\AndroidManifest.xml:16:17-77
+32-->D:\Workspaces\StudioProjects\DynamicForm\app\src\main\AndroidManifest.xml:16:27-74
+33            </intent-filter>
+34        </activity>
+35
+36        <service
+36-->[androidx.room:room-runtime:2.5.0] C:\Users\Windows 10\.gradle\caches\8.9\transforms\9b94f493290e6c725300689ce9c74045\transformed\room-runtime-2.5.0\AndroidManifest.xml:24:9-28:63
+37            android:name="androidx.room.MultiInstanceInvalidationService"
+37-->[androidx.room:room-runtime:2.5.0] C:\Users\Windows 10\.gradle\caches\8.9\transforms\9b94f493290e6c725300689ce9c74045\transformed\room-runtime-2.5.0\AndroidManifest.xml:25:13-74
+38            android:directBootAware="true"
+38-->[androidx.room:room-runtime:2.5.0] C:\Users\Windows 10\.gradle\caches\8.9\transforms\9b94f493290e6c725300689ce9c74045\transformed\room-runtime-2.5.0\AndroidManifest.xml:26:13-43
+39            android:exported="false" />
+39-->[androidx.room:room-runtime:2.5.0] C:\Users\Windows 10\.gradle\caches\8.9\transforms\9b94f493290e6c725300689ce9c74045\transformed\room-runtime-2.5.0\AndroidManifest.xml:27:13-37
+40
+41        <provider
+41-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Windows 10\.gradle\caches\8.9\transforms\7a7cecf2de9633a73c015057f247b5fe\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+42            android:name="androidx.startup.InitializationProvider"
+42-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Windows 10\.gradle\caches\8.9\transforms\7a7cecf2de9633a73c015057f247b5fe\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+43            android:authorities="com.example.dynamicform.androidx-startup"
+43-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Windows 10\.gradle\caches\8.9\transforms\7a7cecf2de9633a73c015057f247b5fe\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+44            android:exported="false" >
+44-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Windows 10\.gradle\caches\8.9\transforms\7a7cecf2de9633a73c015057f247b5fe\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+45            <meta-data
+45-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Windows 10\.gradle\caches\8.9\transforms\7a7cecf2de9633a73c015057f247b5fe\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+46                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+46-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Windows 10\.gradle\caches\8.9\transforms\7a7cecf2de9633a73c015057f247b5fe\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+47                android:value="androidx.startup" />
+47-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Windows 10\.gradle\caches\8.9\transforms\7a7cecf2de9633a73c015057f247b5fe\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+48            <meta-data
+48-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Windows 10\.gradle\caches\8.9\transforms\d877fb6e44443639d269e438fb725e79\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+49                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+49-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Windows 10\.gradle\caches\8.9\transforms\d877fb6e44443639d269e438fb725e79\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+50                android:value="androidx.startup" />
+50-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Windows 10\.gradle\caches\8.9\transforms\d877fb6e44443639d269e438fb725e79\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+51        </provider>
+52    </application>
+53
+54</manifest>
