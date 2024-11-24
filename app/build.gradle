@@ -28,30 +28,11 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.constraintlayout
+    implementation libs.gson
 
-    implementation "androidx.room:room-runtime:2.5.0"
-    annotationProcessor "androidx.room:room-compiler:2.5.0"
-
-    implementation 'com.squareup:javapoet:1.13.0'
-
-    // Exclude Checker Framework from JavaPoet
-    implementation ('com.squareup:javapoet:1.13.0') {
-        exclude group: 'org.checkerframework', module: 'checker'
-    }
-
-    // Force specific versions
-    configurations.all {
-        resolutionStrategy.force('com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava:1.0')
-        resolutionStrategy.force('org.jetbrains:annotations:21.0.1')
-    }
-
-    // Use Checker Framework with exclusions
-    implementation ('org.checkerframework:checker:2.5.8') {
-        exclude group: 'com.google.guava', module: 'listenablefuture'
-        exclude group: 'org.jetbrains', module: 'annotations'
-    }
+    implementation libs.room.runtime
+    annotationProcessor libs.room.compiler
 }
